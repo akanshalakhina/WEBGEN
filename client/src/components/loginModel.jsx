@@ -2,6 +2,14 @@ import React from 'react'
 import {AnimatePresence, motion} from 'motion/react'
 
 function loginModel({open, onClose}) {
+    const handleGoogleAuth=async ()=>{
+        try{
+            const result=await signInWithPopup(auth, provider)
+        }catch(error){
+            console.error("Error signing in with Google:", error)
+        }
+
+    }
   return (
     <AnimatePresence>
     {open && <motion.div
@@ -43,6 +51,7 @@ function loginModel({open, onClose}) {
             <motion.button
             whileHover={{scale:1.04}}
             whileTap={{scale:0.96}}
+            onClick={handleGoogleAuth}
             className='group relative w-full h-13 rounded-xl bg-white text-black font-semibold shadow-xl overflow-hidden'    
             >
                 <div className='relative justify-center flex items-center gap-3'>
