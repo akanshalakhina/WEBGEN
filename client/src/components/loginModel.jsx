@@ -40,6 +40,36 @@ function loginModel({open, onClose}) {
                 <span>Welcome to </span>
                 <span className='bg-linear-to-r from purple-400 to-blue-400 bg-clip-text text-transparent'>WebGen.ai</span>
             </h2>
+            <motion.button
+            whileHover={{scale:1.04}}
+            whileTap={{scale:0.96}}
+            className='group relative w-full h-13 rounded-xl bg-white text-black font-semibold shadow-xl overflow-hidden'    
+            >
+                <div className='relative justify-center flex items-center gap-3'>
+                    <img src="https://imgs.search.brave.com/7YIRraoXsNDcAEjhGdNAp5rXySQ7DBFz0RmyL0fvmkc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/aWNvbnNjb3V0LmNv/bS9pY29uL2ZyZWUv/cG5nLTI1Ni9mcmVl/LWdvb2dsZS1pY29u/LXN2Zy1kb3dubG9h/ZC1wbmctMTkxMjAy/My5wbmc_Zj13ZWJw/Jnc9MTI4"
+                    alt="">
+                    Continue with Google
+                </img>
+
+                </div>
+                
+            </motion.button>
+            <div className='flex items-center gap-4 my-10'>
+                <div className='h-px flex-1 bg-white/10'/>
+                <span className='text-xs text-zinc-500 tracking-wide'>Secure Login</span>
+                <div className='h-px flex-1 bg-white/10'/>
+
+            </div>
+            <p className='text-xs text-zinc-500 to leading-relaxed'>
+                By continuing, you agree to our{" "}
+                <span className='underline cursor-pointer hover:text-zinc-300'>
+                    Terms of Service
+                </span>{" "}
+                and{" "}
+                <span className='underline cursor-pointer hover:text-zinc-300'>
+                 Privacy Policy
+                </span>.
+            </p>
 
         </div>
         
