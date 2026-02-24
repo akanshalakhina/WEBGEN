@@ -2,9 +2,18 @@ import React from 'react'
 import {motion} from "motion/react"
 
 function Home() {
+    const highlights=[
+        "AI-Powered Website Generation",
+        "Customizable Templates",
+        "Responsive Design",
+    ]
   return (
     <div className='relative min-h-screen bg-[#040404] text-white overflow-hidden'>
-    <motion.div
+    <motion.div //motion is used for animations
+    initial={{y:-40, opacity:0}}
+    animate={{y:0, opacity:1}} //y is original position and opacity is original opacity
+    transition={{duration:0.5}}
+
     className='fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-black/40 border-b border-white/10'>
     <div className='max-w-7xl mx-auto px-6 py-4 flex justify-between items-center'>
         <div className='text-lg font-semibold'>
@@ -23,6 +32,45 @@ function Home() {
         </div>    
 
     </motion.div>
+    <section className='pt-44 p -32 px-6 text-center'>
+      <motion.h1
+        initial={{y:40, opacity:0}}
+        animate={{y:0, opacity:1}}
+        className='text-5xl md:text-7xl font-bold tracking-tight'>
+
+        Build Stunning Websites <br></br>
+        <span className='bg-linear-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent'>with AI in Seconds</span>
+      </motion.h1>
+      <motion.p
+        initial={{y:20, opacity:0}}
+        animate={{y:0, opacity:1}}
+        className='mt-8 max-w-2xl mx-auto text-zinc-400 text-lg'>
+        Describe your vision and let our AI create a beautiful, responsive, production-ready website for you. 
+      </motion.p>
+      
+        <button className='px-10 py-4 rounded-xl bg-white text-black font-semibold hover:scale-105 transition mt-12'>Get Started</button>
+   
+
+    </section>
+    <section className='max-w-7xl mx-auto px-6 pb-32'>
+    <div>
+        {highlights.map((h,i)=>(
+            <motion.div
+                key={i}
+                initial={{y:40, opacity:0}}
+                whileInView={{opacity:1,y:0}}
+                className='rounded-2xl bg-white/5 border border-white/10 p-8'>
+
+                <h1 className='text-xl font-semibold mb-3'>{h}</h1>
+                <p className='text-sm text-zinc-400'>
+                    WebGen.ai builds real websites in seconds. Clean code, modern design, and fully responsive. Just describe your vision and watch it come to life.`
+
+                </p>
+            </motion.div>
+        ))}
+    </div>
+
+    </section>
     
     </div>
   )
