@@ -7,6 +7,8 @@ function Home() {
         "Customizable Templates",
         "Responsive Design",
     ]
+    const[openLogin, setOpenLogin]=useState(false) //donot login now
+
   return (
     <div className='relative min-h-screen bg-[#040404] text-white overflow-hidden'>
     <motion.div //motion is used for animations
@@ -23,7 +25,7 @@ function Home() {
             <div className='hidden md:inline text-sm text-zinc-400 hover:text-white cursor-pointer'>
                 Pricing
             </div>
-            <button className='px-4 py-2 rounded-lg border border-white/20 hover:bg-white/10 text-sm '>
+            <button className='px-4 py-2 rounded-lg border border-white/20 hover:bg-white/10 text-sm onClick={()=>setOpenLogin(true)}>'>
                 Get Started
             </button>
             <br></br>
@@ -75,6 +77,8 @@ function Home() {
     <footer className='border-t border-white/10 py-10 text-center text-sm text-zinc-500'>
         &copy; {new Date().getFullYear()} WebGen.ai. 
     </footer>
+
+{openLogin && <loginModel open={openLogin} onClose={() => setOpenLogin(false)} />}    
     
     </div>
   )
