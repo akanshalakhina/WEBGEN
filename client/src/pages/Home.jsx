@@ -26,7 +26,7 @@ function Home() {
                 Pricing
             </div>
             <button 
-             onClick={()=>setOpenLogin(true)}
+            onClick={()=>setOpenLogin(true)}
             className='px-4 py-2 rounded-lg border border-white/20 hover:bg-white/10 text-sm'>
                 Get Started
             </button>
