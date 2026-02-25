@@ -1,12 +1,12 @@
 const userSlice=createSlice({
     name:"user",
     initialState:{
-        userData:[]
+        userData:null
 
     },
     reducers:{
         setUserData:(state,action)=>{
-            state.userData=action.payload
+            state.userData=action.payload 
         }
     }
 })
