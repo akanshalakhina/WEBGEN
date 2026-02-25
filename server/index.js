@@ -8,17 +8,20 @@ import cors from "cors"
 
 
 const app=express() 
-//middlewares
+const port=process.env.PORT || 5000
 app.use(express.json()) //to parse json data from request body
-app.use("/api/auth",authRouter)
 app.use(cookieParser()) //to parse cookies from request header
 app.use(cors({
     origin: "http://localhost:5173",
     credentials: true
 }))
 
+app.use("/api/auth",authRouter)
+app.use("/api/user",userRouter)
 
-const port=process.env.PORT || 5000
+//middlewares
+
+
 app.listen(port, ()=>{
     console.log("Server is started")
     connectDB()
