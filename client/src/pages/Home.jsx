@@ -81,6 +81,8 @@ function Home() {
                           <span>{userData.credits}</span>
                           <span className="font-semibold">+</span>
                         </button>
+                        <button className="w-full px-4 py-3 text-left text-sm hover:bg-white/5">Dashboard</button>
+                        <button className="w-full px-4 py-3 text-left text-sm text-red-400 hover:bg-white/5">Logout</button>
                         <div className="text-sm font-medium">
                           {userData.name}
                         </div>
