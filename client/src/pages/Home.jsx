@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useSelector } from "react-redux";
 import { Coins } from "lucide-react";
-import loginModel from "../components/loginModel";
+import LoginModel from "../components/LoginModel";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { serverUrl } from "../App";
@@ -168,7 +168,7 @@ function Home() {
       </footer>
 
       {openLogin && (
-        <loginModel open={openLogin} onClose={() => setOpenLogin(false)} />
+        <LoginModel open={openLogin} onClose={() => setOpenLogin(false)} />
       )}
     </div>
   );

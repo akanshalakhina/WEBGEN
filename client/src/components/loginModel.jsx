@@ -7,7 +7,7 @@ import {serverUrl} from "../App"
 import{useDispatch} from "react-redux"
 import { setUserData } from '../redux/userSlice'
 
-function loginModel({open, onClose}) {
+function LoginModel({open, onClose}) {
     const dispatch=useDispatch()
     const handleGoogleAuth=async ()=>{
         try{
@@ -69,7 +69,7 @@ function loginModel({open, onClose}) {
             >
                 <div className='relative justify-center flex items-center gap-3'>
                     <img src="https://imgs.search.brave.com/7YIRraoXsNDcAEjhGdNAp5rXySQ7DBFz0RmyL0fvmkc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/aWNvbnNjb3V0LmNv/bS9pY29uL2ZyZWUv/cG5nLTI1Ni9mcmVl/LWdvb2dsZS1pY29u/LXN2Zy1kb3dubG9h/ZC1wbmctMTkxMjAy/My5wbmc_Zj13ZWJw/Jnc9MTI4"
-                    alt="">
+                    alt="google icon">
                     Continue with Google
                 </img>
 
@@ -104,4 +104,4 @@ function loginModel({open, onClose}) {
   )
 }
 
-export default loginModel
+export default LoginModel

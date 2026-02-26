@@ -1,11 +1,12 @@
 // Import the functions you need from the SDKs you need
+
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import {getAuth} from "firebase/auth"
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.env.VITEFIREBASE_API_KEY,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: "webgen-11b68.firebaseapp.com",
   projectId: "webgen-11b68",
   storageBucket: "webgen-11b68.firebasestorage.app",
