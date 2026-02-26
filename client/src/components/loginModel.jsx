@@ -18,6 +18,7 @@ function LoginModel({open, onClose}) {
                 avatar: result.user.photoURL,
             },{withCredentials:true})
             dispatch(setUserData(date))
+            onClose()
         }catch(error){
             console.error("Error signing in with Google:", error)
         }
