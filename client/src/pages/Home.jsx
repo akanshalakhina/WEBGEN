@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useSelector } from "react-redux";
 import { Coins } from "lucide-react";
+import loginModel from "../components/loginModel";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import { serverUrl } from "../App";
+import { setUserData } from "../redux/userSlice";
 
 function Home() {
   const highlights = [
@@ -13,6 +18,16 @@ function Home() {
   const { userData } = useSelector((state) => state.user); //to get userdata from redux store and useSelector is used to get data from redux store and state.user is user slice and userData is the data we want to get
   const { openProfile, setOpenProfile } = useState(false);
   //user data lekr ayege
+  const dispatch=useDispatch()
+  const handleLogOut=async()=>{
+    try{
+        await axios.get(`${serverUrl}/api/auth/logout`,{withCredentials:true})
+        dispatch(setUserData(null))
+    }catch(error){
+        console.error("Error logging out:", error)
+    }
+
+  }
 
   return (
     <div className="relative min-h-screen bg-[#040404] text-white overflow-hidden">
