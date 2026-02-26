@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { useSelector } from "react-redux";
 import { Coins } from "lucide-react";
 
@@ -11,7 +11,7 @@ function Home() {
   ];
   const [openLogin, setOpenLogin] = useState(false); //donot login now
   const { userData } = useSelector((state) => state.user); //to get userdata from redux store and useSelector is used to get data from redux store and state.user is user slice and userData is the data we want to get
-
+  const { openProfile, setOpenProfile } = useState(false);
   //user data lekr ayege
 
   return (
@@ -28,12 +28,14 @@ function Home() {
             <div className="hidden md:inline text-sm text-zinc-400 hover:text-white cursor-pointer">
               Pricing
             </div>
-            {userData && <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border-white/10 text-sm cursor-pointer hover:bg-white/10 transition">
-                <Coins size={14}className="text-yellow-400"/>
+            {userData && (
+              <div className=" hidden  md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border-white/10 text-sm cursor-pointer hover:bg-white/10 transition">
+                <Coins size={14} className="text-yellow-400" />
                 <span className="text-zinc-300">Credits</span>
                 <span>{userData.credits}</span>
                 <span className="font-semibold">+</span>
-                </div>}
+              </div>
+            )}
             {!userData ? (
               <button
                 className="px-4 py-2 rounded-lg border border-white/20 hover:bg-white/10 text-sm"
@@ -42,13 +44,57 @@ function Home() {
                 Get Started
               </button>
             ) : (
-              <button className="flex items-center">
-                <img
-                  src={userData.avatar || `https://ui-avatars.com/api/?name=${userData.name}`} //if userData.avatar is not available then use ui-avatars to generate avatar based on user name
-                  alt=""
-                  className="w-9 h-9 rounded-full border border-white/20 object-cover"
-                />
-              </button>
+              <div className="relative">
+                <button
+                  className="flex items-center"
+                  onClick={() => setOpenProfile(!openProfile)}
+                >
+                  <img
+                    src={
+                      userData.avatar ||
+                      `https://ui-avatars.com/api/?name=${userData.name}`
+                    } //if userData.avatar is not available then use ui-avatars to generate avatar based on user name
+                    alt=""
+                    className="w-9 h-9 rounded-full border border-white/20 object-cover"
+                  />
+                </button>
+                <AnimatePresence>
+                  {openProfile && (
+                    <>
+                      <motion.div
+                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                        className="absolute right-0 mt-3 w-60 z-50 rounded-xl bg-[#0b0b0b] border border-white/10"
+                      >
+                        <div className="px-4 py-3 border-b border-white/10">
+                          <p className="text-sm font-medium truncate">
+                            {userData.name}
+                          </p>
+                          <p className="text-sm text-zinc-500 truncate">
+                            {userData.email}
+                          </p>
+                        </div>
+                        <button className="md:hidden w-full px-4 py-3 flex items-center gap-2 text-sm border-b border-white/10 hover:bg-white/5">
+                          <Coins size={14} className="text-yellow-400" />
+                          <span className="text-zinc-300">Credits</span>
+                          <span>{userData.credits}</span>
+                          <span className="font-semibold">+</span>
+                        </button>
+                        <div className="text-sm font-medium">
+                          {userData.name}
+                        </div>
+                        <div className="text-xs text-zinc-400 mt-1">
+                          {userData.email}
+                        </div>
+                        <button className="mt-3 w-full text-center text-xs text-zinc-400 hover:text-white">
+                          Logout
+                        </button>
+                      </motion.div>
+                    </>
+                  )}
+                </AnimatePresence>
+              </div>
             )}
 
             <br></br>
