@@ -1,4 +1,5 @@
-import { get } from 'mongoose'
+
+import axios from "axios";
 import React, { useEffect } from 'react'
 
 function useGetCurrentUser() {
